@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ERP管理系统</title>
+<link rel="stylesheet" type="text/css" href="../js/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../js/easyui/themes/icon.css">
+<link rel="stylesheet" href="../js/ztree/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="../js/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../js/ztree/jquery.ztree.all-3.5.js"></script>
+<script type="text/javascript">
+	function addTabs() {
+		var result = $('#tt').tabs("exists", "新选项卡")
+		if (result) {
+			$("#tt").tabs("select", "新选项卡")
+		} else {
+			$('#tt').tabs('add', {
+				title : '新选项卡',//选项卡标题
+				iconCls : 'icon-reload',
+				closable : true,
+				selected : true
+			//是否被选中
+			});
+		}
+	}
+</script>
+
+<script type="text/javascript">
+$(function(){
+	var setting = {
+			data: {
+				simpleData: {
+					enable: true,
+					idKey: "id",
+					pIdKey: "pId",
+					rootPId: 0
+				}
+			}
+		};
+		var zNodes = [
+			{"name":"11111111","id":"001","pId":"0"},
+			{"name":"2222222","id":"002","pId":"001"},
+			{"name":"222222222","id":"003","pId":"001"},
+			{"name":"3333333333333","id":"004","pId":"002"},
+			{"name":"3333333333","id":"005","pId":"002"},
+			{"name":"3333333333","id":"006","pId":"002"},
+
+		]
+		
+		$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+		
+		
+		var setting1 = {
+				data: {
+					simpleData: {
+						enable: true,
+						idKey: "id",
+						pIdKey: "pId",
+						rootPId: 0
+					}
+				}
+			};
+			
+		$.get("../data/menu.json",function(data){
+			
+			$.fn.zTree.init($("#treeDemo1"), setting1, data);
+		})
+})
+
+</script>
+</head>
+<body class="easyui-layout">
+	<div data-options="region:'north'" style="height: 50px">
+		<font color="blue">
+			<h3 align="center">管理系统</h3>
+		</font>
+	</div>
+	<div data-options="region:'south',split:true" style="height: 50px;"></div>
+	<div data-options="region:'east',split:true" title="East"
+		style="width: 100px;"></div>
+	<div data-options="region:'west',split:true" title="管理面板"
+		style="width: 200px;">
+		<div id="aa" class="easyui-accordion" fit="true">
+			<div title="基本管理" data-options="iconCls:'icon-mini-add'"
+				style="overflow: auto; padding: 10px;">
+				<a id="btn" href="#" class="easyui-linkbutton" onclick="addTabs()"
+					data-options="iconCls:'icon-search'">添加选项卡</a>
+			</div>
+			<div title="订单管理" data-options="iconCls:'icon-mini-add'"
+				style="padding: 10px;" >
+				<ul id="treeDemo" class="ztree"></ul>
+
+			</div>
+			<div title="系统管理" data-options="iconCls:'icon-mini-add'" selected="true">
+				<ul id="treeDemo1" class="ztree"></ul>
+			</div>
+		</div>
+	</div>
+	<div data-options="region:'center',title:'操作面板',iconCls:'icon-ok'">
+
+		<div id="tt" class="easyui-tabs">
+			<div title="选项卡1" data-options="iconCls:'icon-reload',closable:true">
+				选项卡1</div>
+			<div title="选项卡2"
+				data-options="iconCls:'icon-reload',closable:true,selected : true"
+				style="overflow: auto; padding: 20px; display: none;">选项卡3</div>
+			<div title="选项卡3" data-options="iconCls:'icon-reload',closable:true"
+				style="padding: 20px; display: none;">选项卡3</div>
+		</div>
+	</div>
+</body>
+</html>
