@@ -25,6 +25,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.zaltty.erp.doamin.base.Standard;
 import com.zaltty.erp.service.base.StandardService;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
@@ -100,6 +101,25 @@ public class StandardAction extends ActionSupport
 		response.getWriter().println(json);
 		
 		return NONE;
+	}
+	
+	@Action(value = "standard_findAll")
+	public String findAll() throws IOException {
+		
+		Page<Standard> page = standardService.findAll(null);
+		List<Standard> list = page.getContent();
+	
+		//将list集合转换成JSon字符串
+	 String json = JSONArray.fromObject(list).toString();
+	 
+	 HttpServletResponse response = ServletActionContext.getResponse();
+	 response.setContentType("application/json;charset=UTF-8");
+	 response.getWriter().write(json);
+	 
+	 
+		
+		return NONE;
+		
 	}
 
 }

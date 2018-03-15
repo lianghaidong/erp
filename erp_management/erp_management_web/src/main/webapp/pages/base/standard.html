@@ -51,7 +51,16 @@
 				text : '修改',
 				iconCls : 'icon-edit',
 				handler : function(){
-					alert('修改');
+					//alert('修改');
+					//判断用户勾选的条数
+					var result = $("#grid").datagrid("getSelections")
+					if(result.length==1){
+						$("#standardWindow").window('open');
+						$("#standardWindow").form("load",result[0])
+						
+					}else{
+						$.messager.alert("提示", "您必须也只能选择一条数据进行修改","info")
+					}
 				}
 			},{
 				id : 'button-delete',
