@@ -31,12 +31,14 @@
 		</dependency>
 
 		<!-- spring 框架 -->
+		<!-- spring框架的基础坐标  集成spring框架需要依赖这个坐标-->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 
+		<!-- spring框架的基础坐标的扩展坐标 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
@@ -87,12 +89,14 @@
 			<version>${activemq.version}</version>
 		</dependency>
 
-		<!-- struts2 框架 -->
+		<!-- struts2 框架 核心包 -->
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-core</artifactId>
 			<version>${struts2.version}</version>
 		</dependency>
+		
+		<!-- struts和spring整合的时候依赖的插件包 -->
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-spring-plugin</artifactId>
