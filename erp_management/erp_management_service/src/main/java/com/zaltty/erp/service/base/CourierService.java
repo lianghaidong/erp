@@ -2,6 +2,7 @@ package com.zaltty.erp.service.base;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 
 import com.zaltty.erp.doamin.base.Courier;
 
@@ -17,6 +18,9 @@ public interface CourierService {
 	Page<Courier> findAll(Pageable pageable);
 
 	void babatchDel(String ids);
+
+	Page<Courier> findAll(Specification<Courier> specification,
+			Pageable pageable);
 
 }
   
