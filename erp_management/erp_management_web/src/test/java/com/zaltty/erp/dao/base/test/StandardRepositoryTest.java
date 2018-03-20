@@ -19,11 +19,11 @@ import com.zaltty.erp.doamin.base.Standard;
  * Function:  <br/>  
  * Date:     2018年3月12日 下午8:39:55 <br/>       
  */
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
 public class StandardRepositoryTest {
 
+	
     
     @Autowired
     private StandardRepository standardRepository;
