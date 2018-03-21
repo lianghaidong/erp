@@ -100,6 +100,11 @@ public class Area {
     public void setSubareas(Set<SubArea> subareas) {
         this.subareas = subareas;
     }
+    
+    //json库在序列化对象的时候是在调用对象的get方法
+    public String getName(){
+    	return province+city+district;
+    }
 
     @Override
     public String toString() {

@@ -11,6 +11,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
@@ -24,6 +25,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.QAbstractAuditable;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -143,13 +145,31 @@ public class AreaAction extends CommonAction<Area> {
 			return NONE;
 		}
 		
+		private String q;
+		
+		public void setQ(String q) {
+			this.q = q;
+		}
+		
+		
+		
 		@Action(value = "areaAction_findAll")
 		public String findAll() throws IOException {
+			List<Area> list;
+			if (StringUtils.isNotEmpty(q)) {
+				//根据用户输入进行模糊查询
+				list=areaService.findByQ(q);
+				
+			}else {
+				//如果q()为空,查询所有 
+				
+				Page<Area> page = areaService.findAll(null);
+				list = page.getContent();
+				
+				
+			}
 			
 			//找所有数据不需要传参数,使用原来的findAll方法
-			Page<Area> page = areaService.findAll(null);
-			List<Area> list = page.getContent();
-			
 			//需要忽略的配置信息,为了避免出现懒加载错误
 			JsonConfig jsonConfig = new JsonConfig();
 			jsonConfig.setExcludes(new String[]{"subareas"});
