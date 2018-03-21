@@ -1,10 +1,30 @@
-package com.itheima.crm.service;  
-/**  
- * ClassName:CustomerService <br/>  
- * Function:  <br/>  
- * Date:     2018年3月21日 上午10:05:22 <br/>       
+package com.itheima.crm.service;
+/**
+ * ClassName:CustomerService <br/>
+ * Function: <br/>
+ * Date: 2018年3月19日 下午2:49:15 <br/>
  */
+
+import java.util.List;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import com.itheima.crm.domain.Customer;
+
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public interface CustomerService {
 
+    @GET
+    @Path("/findAll")
+    List<Customer> findAll();
+
+    // 查询未关联定区的客户
+    @GET
+    @Path("/findCustomersUnAssociated")
+    List<Customer> findCustomersUnAssociated();
 }
-  
