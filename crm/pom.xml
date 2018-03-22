@@ -16,6 +16,17 @@
   		<version>0.0.1-SNAPSHOT</version>
   		<type>pom</type>
   	</dependency>
-  	
+
+  	<dependency>
+  		<groupId>com.zaltty</groupId>
+  		<artifactId>erp_management_web</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  		<type>war</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.zaltty</groupId>
+  		<artifactId>erp_management_service</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
 </project>
