@@ -11,5 +11,7 @@ import com.zaltty.erp.doamin.base.FixedArea;
  */
 public interface FixedAreaRepository extends JpaRepository<FixedArea, Long> {
 
+	
+
 }
   

@@ -174,7 +174,7 @@ public class AreaAction extends CommonAction<Area> {
 			JsonConfig jsonConfig = new JsonConfig();
 			jsonConfig.setExcludes(new String[]{"subareas"});
 			
-			json2json(list, jsonConfig);
+			list2json(list, jsonConfig);
 			
 			return NONE;
 		}

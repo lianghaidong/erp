@@ -1,5 +1,7 @@
 package com.zaltty.erp.dao.base;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -21,5 +23,8 @@ public interface CourierRepository extends JpaRepository<Courier,Long>,JpaSpecif
     @Query("update Courier set deltag = 1 where id = ?")
 	void updateDelTagById(long id);
 
+    
+  //查询在职快递员方法二(使用springdateJpa方式)
+    List<Courier> findBydeltagIsNull();
 }
   

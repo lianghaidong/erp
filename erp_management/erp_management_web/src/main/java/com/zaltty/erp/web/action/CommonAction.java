@@ -87,7 +87,7 @@ public class CommonAction<T> extends ActionSupport implements ModelDriven<T> {
 		response.getWriter().println(json);
 	}
 	
-	public void json2json(List<T> list,JsonConfig jsonConfig) throws IOException{
+	public void list2json(List list,JsonConfig jsonConfig) throws IOException{
 		
 		String json;
 		if (jsonConfig!=null) {

@@ -1,5 +1,7 @@
 package com.zaltty.erp.service.base;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -21,6 +23,9 @@ public interface CourierService {
 
 	Page<Courier> findAll(Specification<Courier> specification,
 			Pageable pageable);
+
+	//查询在职员工方法二
+	List<Courier> findAvaible();
 
 }
   

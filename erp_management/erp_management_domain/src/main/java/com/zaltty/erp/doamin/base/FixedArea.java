@@ -133,4 +133,6 @@ public class FixedArea {
         this.company = company;
     }
 
+	
+
 }

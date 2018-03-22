@@ -14,11 +14,5 @@
   		<artifactId>erp_management_service</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
-  	<dependency>
-  		<groupId>com.zaltty</groupId>
-  		<artifactId>crm</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  		<type>war</type>
-  	</dependency>
   </dependencies>
 </project>

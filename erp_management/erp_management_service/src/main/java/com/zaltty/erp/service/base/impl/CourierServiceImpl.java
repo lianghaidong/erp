@@ -1,5 +1,7 @@
 package com.zaltty.erp.service.base.impl;
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -64,7 +66,16 @@ public class CourierServiceImpl implements CourierService{
 	
 		return courierRepository.findAll(specification, pageable);
 	}
+
 	
+//	//查询在职快递员方法二(使用springdateJpa命名规范方式,进入courierRepository接口自定义方法)
+	
+	@Override
+	public List<Courier> findAvaible() {
+		
+		return courierRepository.findBydeltagIsNull();
+	}
+
 
 	
 }
