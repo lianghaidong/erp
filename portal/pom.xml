@@ -12,9 +12,13 @@
   <dependencies>
   	<dependency>
   		<groupId>com.zaltty</groupId>
-  		<artifactId>erp_parent</artifactId>
+  		<artifactId>utils</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
-  		<type>pom</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.zaltty</groupId>
+  		<artifactId>erp_management_domain</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>
 </project>

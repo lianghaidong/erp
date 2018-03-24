@@ -61,4 +61,32 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 		
 	}
+
+	@Override
+	public void save(Customer customer) {
+		
+		customerRepository.save(customer);
+		
+	}
+
+	@Override
+	public void active(String telephone) {
+		
+		customerRepository.active(telephone);
+		
+	}
+
+	//查询是否已激活
+	@Override
+	public Customer isactive(String telephone) {
+		
+		return customerRepository.findByTelephone(telephone);
+	}
+
+	//登录
+	@Override
+	public Customer login(String telephone, String password) {
+		
+		return customerRepository.findByTelephoneAndPassword(telephone,password);
+	}
 }

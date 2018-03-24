@@ -1,5 +1,7 @@
 package com.zaltty.erp.service.base.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zaltty.erp.dao.base.SubareaRepository;
+import com.zaltty.erp.doamin.base.FixedArea;
 import com.zaltty.erp.doamin.base.SubArea;
 import com.zaltty.erp.service.base.SubareaService;
 
@@ -35,6 +38,24 @@ public class SubareaServiceImpl implements SubareaService{
 		  
 		
 		return subareaRepository.findAll(pageable);
+	}
+
+	// 查询未关联定区的分区
+	@Override
+	public List<SubArea> findUnAssociatedSubAreas() {
+		
+		return subareaRepository.findByFixedAreaIsNull();
+	}
+
+	 // 查询关联到指定定区的分区
+	@Override
+	public List<SubArea> findAssociatedSubAreas(Long fixedAreaId) {
+		
+		FixedArea fixedArea = new FixedArea();
+		
+		fixedArea.setId(fixedAreaId);
+		
+	return subareaRepository.findByFixedArea(fixedArea);
 	}
 
 }
